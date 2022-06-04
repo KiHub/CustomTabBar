@@ -10,8 +10,10 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var selected = 0
+    @State private var isPresented = false
     
     var body: some View {
+        NavigationView {
         VStack {
             Spacer()
             ZStack {
@@ -29,11 +31,14 @@ struct ContentView: View {
                     
                     Button {
                         self.selected = 1
+                       
                     } label: {
-                       // Image("magazine")
+                       // Image("globe")
                         Image(systemName: "mic")
                             .font(.largeTitle)
                     }.foregroundColor(self.selected == 1 ? .black : .gray)
+                    
+                        
                     
                     Spacer().frame(width: 120)
 
@@ -64,6 +69,7 @@ struct ContentView: View {
                 
                 Button {
                     self.selected = 4
+                    isPresented.toggle()
                 } label: {
                   //  Image("balloon")
                     Image(systemName: "ferry")
@@ -77,15 +83,23 @@ struct ContentView: View {
                 .clipShape(Circle())
                     .offset(y: -32)
                     .shadow(radius: 5)
-
+                  
                 
             }
             
         }   .background(Color.mint)
             .edgesIgnoringSafeArea(.bottom)
+            .sheet(isPresented: $isPresented, content: {
+                HomeView()
+            })
+            
+//
+//            .sheet(isPresented: $showingDetail) {
+//                        DetailView()
+//                    }
             
         
-        
+        }
     }
 }
 
