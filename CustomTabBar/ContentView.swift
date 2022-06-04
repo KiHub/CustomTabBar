@@ -20,7 +20,9 @@ struct ContentView: View {
                     Button {
                         self.selected = 0
                     } label: {
-                        Image("globe")
+                       // Image("globe")
+                        Image(systemName: "house")
+                            .font(.largeTitle)
                     }.foregroundColor(self.selected == 0 ? .black : .gray)
                     
                     Spacer(minLength: 12)
@@ -28,7 +30,9 @@ struct ContentView: View {
                     Button {
                         self.selected = 1
                     } label: {
-                        Image("magazine")
+                       // Image("magazine")
+                        Image(systemName: "mic")
+                            .font(.largeTitle)
                     }.foregroundColor(self.selected == 1 ? .black : .gray)
                     
                     Spacer().frame(width: 120)
@@ -36,7 +40,9 @@ struct ContentView: View {
                     Button {
                         self.selected = 2
                     } label: {
-                        Image("research")
+                      //  Image("research")
+                        Image(systemName: "mic")
+                            .font(.largeTitle)
                     }.foregroundColor(self.selected == 2 ? .black : .gray)
                     
                     Spacer(minLength: 12)
@@ -44,21 +50,27 @@ struct ContentView: View {
                     Button {
                         self.selected = 3
                     } label: {
-                        Image("navigation")
+                      //  Image("navigation")
+                        Image(systemName: "list.triangle")
+                            .font(.largeTitle)
                     }.foregroundColor(self.selected == 3 ? .black : .gray)
                     
                     
                 }
                 .padding()
-                .padding(.horizontal, 22)
+                .padding(.horizontal, 10)
               .background(CurvedShape())
               
                 
                 Button {
-                    //
+                    self.selected = 4
                 } label: {
-                    Image("balloon")
-                        .renderingMode(.original)
+                  //  Image("balloon")
+                    Image(systemName: "ferry")
+                        .font(.largeTitle)
+                      //  .renderingMode(.original)
+                        .foregroundColor(self.selected == 4 ? .indigo : .mint)
+                   
                         .padding()
                 }
                 .background(Color.yellow)
@@ -87,13 +99,20 @@ struct ContentView_Previews: PreviewProvider {
 struct CurvedShape: View {
     var body: some View {
         Path { path in
+          
             path.move(to: CGPoint(x: 0, y: 0))
-            path.addLine(to: CGPoint(x: UIScreen.main.bounds.width , y: 0))
+            path.addLine(to: CGPoint(x: UIScreen.main.bounds.width, y: 0))
             path.addLine(to: CGPoint(x: UIScreen.main.bounds.width, y: 70))
             
             path.addArc(center: CGPoint(x: UIScreen.main.bounds.width / 2, y: 70), radius: 45, startAngle: .zero, endAngle: .init(degrees: 180), clockwise: true)
             path.addLine(to: CGPoint(x: 0, y: 70))
+         
+        
+            
         }.fill(Color.white)
             .rotationEffect(.init(degrees: 180))
+            .offset(x: 0, y: 2)
+            
+          //  .cornerRadius(15)
     }
 }
